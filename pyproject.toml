@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "building-your-first-api-with-django-and-django-rest-framework"
+version = "0.1.0"
+description = "Tutorial for you to learn how to create a API using Django and Django Rest Framework"
+authors = ["FeliPython <felipejpa15@gmail.com>"]
+license = "GPL"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

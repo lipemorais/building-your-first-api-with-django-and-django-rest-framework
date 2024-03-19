@@ -1,5 +1,7 @@
 ### Tutorial Format Breakdown
 
+[Slides](https://docs.google.com/presentation/d/1Ajv9MYQQ011_Y4r1W4I6Y-6XP_faFF0317Zkn2XupMw/edit?usp=sharing)
+
 **Introduction and Overview (05 minutes)**
 
 - 🎬 Lecture: Introduction to Django and Django Rest Framework, and overview of API development.

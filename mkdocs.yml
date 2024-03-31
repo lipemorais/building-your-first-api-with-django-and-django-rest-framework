@@ -1,6 +1,8 @@
 site_name: 🌐 Building Your First API with Django and Django Rest Framework
-Nav:
--Home: index.md
+nav:
+- Home: index.md
+- Sample: sample.md
+- About: about.md
 theme:
   name: material
   features:
@@ -17,16 +19,16 @@ theme:
   palette:
     - scheme: default
       toggle:
-        icon: material/toggle-switch-off-outline
+        icon: material/weather-night
         name: Switch to dark mode
-      primary: teal
-      accent: purple
+      primary: deep purple
+      accent: pink
     - scheme: slate
       toggle:
-        icon: material/toggle-switch
+        icon: material/weather-sunny
         name: Switch to light mode
-      primary: teal
-      accent: lime
+      primary: deep purple
+      accent: pink
 
 extra:
   social:
@@ -36,3 +38,26 @@ extra:
       link: https://twitter.com/felipedemorais_
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/felipe-de-morais/
+
+markdown_extensions:
+  - pymdownx.tasklist
+  - pymdownx.tilde
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+
+copyright: |
+  &copy; 2024 <a href="https://github.com/lipemorais/"  target="_blank" rel="noopener">Felipe de Morais</a>

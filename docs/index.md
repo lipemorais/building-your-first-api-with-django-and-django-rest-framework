@@ -9,6 +9,12 @@
 
 [Presentation slides](https://docs.google.com/presentation/d/1Ajv9MYQQ011_Y4r1W4I6Y-6XP_faFF0317Zkn2XupMw/edit?usp=sharing) 📊
 
+```mermaid
+sequenceDiagram
+    Alice ->> Bob: Hello Bob, how are you?
+```
+
+
 ## Introduction and Overview
 
 - 🎬 Lecture: Introduction to Django and Django Rest Framework, and overview of API development.

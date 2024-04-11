@@ -3,7 +3,7 @@ name = "building-your-first-api-with-django-and-django-rest-framework"
 version = "0.1.0"
 description = "Tutorial for you to learn how to create a API using Django and Django Rest Framework"
 authors = ["FeliPython <felipejpa15@gmail.com>"]
-license = "GPL"
+license = "CC BY-NC-SA"
 readme = "README.md"
 
 [tool.poetry.dependencies]

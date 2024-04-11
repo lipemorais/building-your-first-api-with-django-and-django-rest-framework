@@ -2,6 +2,13 @@
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
+## mermaid
+
+```mermaid
+sequenceDiagram
+    Alice ->> Bob: Hello Bob, how are you?
+```
+
 ## Code Annotation Examples
 
 ### Codeblocks

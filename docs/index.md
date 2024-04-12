@@ -25,10 +25,24 @@ Requirements list:
 To start, we first need to understand what Django is. Django is the most popular web framework in the Python ecosystem, characterized by its high-level structure that encourages rapid development and clean, pragmatic design. It has been constructed by experienced developers and aims to mitigate the hassles of web development; this allows developers to focus their attention on writing their app without feeling the need to reinvent the wheel. Django is a free and open-source framework that is ingrained in the model-template-views architectural pattern. Its maintenance is overseen by the Django Software Foundation, an independent, non-profit organization based in the United States.
 
 ### [Django Rest Framework](https://www.django-rest-framework.org/)
-The Django Rest Framework is a powerful library constructed on top of Django, with a unique interlinking to the Django Model. This relationship endows Django with the enhanced ability to create application programming interfaces (APIs).
+The Django Rest Framework is a powerful library constructed on top of Django, with a unique interlinking to the Django Model. This relationship endows Django with the enhanced ability to create APIs(application programming interfaces).
 
-- 💡 Purpose: Setting the stage and objectives for the tutorial.
+An important thing to know about Django is how the information usually flows
 
+```mermaid
+sequenceDiagram 
+    participant B as Browser
+    participant DS as Django Server
+    participant UP as URL Patterns 
+    participant V as View
+    
+    B->>DS: Sends HTTP request 
+    DS->>UP: Matches HTTP request to URL patterns
+    UP->>V: Calls appropriate View with request object 
+    V-->>UP: Response object
+    UP-->>DS: Returns HTTP response
+    DS-->>B: JSON response(in our case)
+```
 ## Django Models
 
 - 🎬 Lecture : Fundamentals of Django models.

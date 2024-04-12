@@ -20,6 +20,13 @@ Requirements list:
 ## Introduction and Overview
 
 - 🎬 Lecture: Introduction to Django and Django Rest Framework, and overview of API development.
+
+### [Django](https://www.djangoproject.com/)
+To start, we first need to understand what Django is. Django is the most popular web framework in the Python ecosystem, characterized by its high-level structure that encourages rapid development and clean, pragmatic design. It has been constructed by experienced developers and aims to mitigate the hassles of web development; this allows developers to focus their attention on writing their app without feeling the need to reinvent the wheel. Django is a free and open-source framework that is ingrained in the model-template-views architectural pattern. Its maintenance is overseen by the Django Software Foundation, an independent, non-profit organization based in the United States.
+
+### [Django Rest Framework](https://www.django-rest-framework.org/)
+The Django Rest Framework is a powerful library constructed on top of Django, with a unique interlinking to the Django Model. This relationship endows Django with the enhanced ability to create application programming interfaces (APIs).
+
 - 💡 Purpose: Setting the stage and objectives for the tutorial.
 
 ## Django Models

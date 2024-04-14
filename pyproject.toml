@@ -24,3 +24,4 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.taskipy.tasks]
 docs = { cmd = "mkdocs serve", help = "run documentation server" }
+r = { cmd = "python first_api/manage.py runserver", help = "run django dev server" }

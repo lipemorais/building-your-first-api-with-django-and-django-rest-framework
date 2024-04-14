@@ -58,8 +58,58 @@ The sequence diagram illustrates the flow of an HTTP request through the Django 
 
 This sequence outlines the typical flow of a request-response cycle in Django, demonstrating how requests are handled and responses are generated within the framework.
 
+## Set up the project
+
+Now we have a basic understanding of Django and DRF. We are going to set up the project.
+
+Clone the repository:
+
+```shell
+git clone git@github.com:lipemorais/building-your-first-api-with-django-and-django-rest-framework.git
+```
+
+This will clone the repository
+
+## Creating the music Django App
+
+Now we are going to create the Django we are going to use in this tutorial.
+
+```shell
+cd first_api
+./manage.py startapp music
+```
+
+This will create the app structure for us. Something similar to this below:
+```shell
+❯ tree .
+.
+├── db.sqlite3
+├── first_api
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-312.pyc
+│   │   ├── settings.cpython-312.pyc
+│   │   ├── urls.cpython-312.pyc
+│   │   └── wsgi.cpython-312.pyc
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── manage.py
+└── music
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py
+    ├── tests.py
+    └── views.py
+```
 
 ## Django Models
+
+Now the next step is create the models we are going to use in our API to represent the domain models.
 
 - 🎬 Lecture : Fundamentals of Django models.
 - 💻 Exercise : Hands-on creation and manipulation of models.

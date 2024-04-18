@@ -111,9 +111,47 @@ This will create the app structure for us. Something similar to this below:
 
 Now the next step is create the models we are going to use in our API to represent the domain models.
 
-- 🎬 Lecture : Fundamentals of Django models.
-- 💻 Exercise : Hands-on creation and manipulation of models.
-- 💡 Purpose: Understanding data handling in Django.
+We are going to create 3 models in the file models.py
+
+1. Artist
+2. Album
+3. Song
+
+Let's start with the artist model.
+
+```python
+class Artist(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+```
+
+Don't forget to import the models
+```python
+from django.db import models
+```
+Now the album model
+```python
+class Album(models.Model):
+    title = models.CharField(max_length=100)
+    artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
+    release_year = models.IntegerField()
+
+    def __str__(self):
+        return self.title
+```
+
+the last model will be the song model that will have relationship with artist and album.
+
+```python
+class Song(models.Model):
+    author = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    artist = models.ForeignKey(Artist, on_delete=models.CASCADE)  # Artist or band name
+    album = models.ForeignKey(Album, on_delete=models.CASCADE)  # Album the song belongs to
+    duration = models.IntegerField()  # Duration of the song in seconds
+```
 
 ## URL Mapping and Views
 

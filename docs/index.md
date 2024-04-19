@@ -155,9 +155,48 @@ class Song(models.Model):
 
 ## URL Mapping and Views
 
-- 🎬 Lecture : Explanation of URL configurations and Views/ViewSets in Django.
-- 💻 Exercise : Students implement URL mapping and views for a sample API.
-- 💡 Purpose: Practical understanding of Django's routing and controller mechanisms.
+Now let's go to the URL Mapping, we need to associate the url with the handler functions that are called as view in Django. To create a simple endpoint that works.
+
+
+```python
+# first_api.urls.py
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("", include('music.urls')),
+]
+```
+
+You need to create a file `urls.py` inside music folder and make it look like the example below.
+
+```python
+# music.urls.py
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index')
+]
+```
+
+And last but not least you need to create this
+you need to create the view. A function view in this case.
+
+```python
+from django.http import HttpResponse
+
+
+def index(_request):
+    return HttpResponse("My first API!")
+```
+
+So no you can use the command `task r` to start our django server, so you can access http://127.0.0.1:8000/ to see it.
+![my_first_api.png](images/my_first_api.png)
+
+Until here we just looked at Django stuff. Now we will  dive into Django Rest Framework(DRF) stuff.
 
 ## Serializers
 

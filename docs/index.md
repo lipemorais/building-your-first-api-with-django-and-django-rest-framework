@@ -155,7 +155,7 @@ class Album(models.Model):
         return self.title
 ```
 
-the last model will be the song model that will have relationship with artist and album.
+The last model will be the song model that will have relationship with artist and album.
 
 ```python
 # music.models.py

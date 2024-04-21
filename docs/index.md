@@ -102,6 +102,22 @@ This will create the app structure for us. Something similar to this below:
     └── views.py
 ```
 
+Don't forget to add the app music to your INSTALLED_APPS in your `settings.py`
+```python
+# settings.py
+...
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "rest_framework",
+    "music",
+]
+...
+```
 ## Django Models
 
 Now the next step is create the models we are going to use in our API to represent the domain models.

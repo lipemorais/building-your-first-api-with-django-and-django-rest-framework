@@ -131,6 +131,7 @@ We are going to create 3 models in the file models.py
 Let's start with the artist model.
 
 ```python
+# music.models.py
 class Artist(models.Model):
     name = models.CharField(max_length=100)
 
@@ -144,6 +145,7 @@ from django.db import models
 ```
 Now the album model
 ```python
+# music.models.py
 class Album(models.Model):
     title = models.CharField(max_length=100)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
@@ -156,6 +158,7 @@ class Album(models.Model):
 the last model will be the song model that will have relationship with artist and album.
 
 ```python
+# music.models.py
 class Song(models.Model):
     author = models.CharField(max_length=100)
     title = models.CharField(max_length=100)
@@ -197,6 +200,7 @@ And last but not least you need to create this
 you need to create the view. A function view in this case.
 
 ```python
+# music.views.py
 from django.http import HttpResponse
 
 

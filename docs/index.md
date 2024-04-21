@@ -86,11 +86,6 @@ This will create the app structure for us. Something similar to this below:
 ├── db.sqlite3
 ├── first_api
 │   ├── __init__.py
-│   ├── __pycache__
-│   │   ├── __init__.cpython-312.pyc
-│   │   ├── settings.cpython-312.pyc
-│   │   ├── urls.cpython-312.pyc
-│   │   └── wsgi.cpython-312.pyc
 │   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py

@@ -306,7 +306,7 @@ Now access http://127.0.0.1:8000/ to see your API working. 🥳
 
 Congratulations now you have your first api working.
 
-![first_api_working.png](../first_api_working.png)
+![first_api_working.png](first_api_working.png)
 ## Lunch/Break
 
 - ⏳ Time for rest and informal discussions.

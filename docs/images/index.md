@@ -209,21 +209,104 @@ def index(_request):
 ```
 
 So no you can use the command `task r` to start our django server, so you can access http://127.0.0.1:8000/ to see it.
-![my_first_api.png](images/my_first_api.png)
+![my_first_api.png](my_first_api.png)
 
 Until here we just looked at Django stuff. Now we will  dive into Django Rest Framework(DRF) stuff.
 
 ## Serializers
 
-- 🎬 Lecture : The role and implementation of serializers.
-- 💻 Exercise : Students practice converting data formats using serializers.
-- 💡 Purpose: Grasping data format conversions essential in API communication.
+From now on we will dive into DRF specific work.
+The concept I want to present you is the Serializer. That is responsible for parse the data received(usually through a HTTP request, since we are creating an API) into python native types, and sometime into our Django models.
+
+
+Serializers are deeply inspired into [Django Forms](https://docs.djangoproject.com/en/5.0/topics/forms/#forms-in-django) and [Django Model Forms](https://docs.djangoproject.com/en/5.0/topics/forms/modelforms/)
+
+So now we will use our Artist model to create our first endpoint.
+
+You need to create a file called `serializers.py` with creating the serializer for the Artist Model.
+```python
+from rest_framework import serializers
+
+from music.models import Artist
+
+
+class ArtistSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Artist
+        fields = ['name']
+```
+1. Here we import the serializers module from rest_framework
+2. We also import the model Artist
+3. Create a `ArtistSerializer` inheriting from `serializers.HyperlinkedModelSerializers`. It will do a few things.
+   1. Create a Serializer based on the Artist Model based on the model field in the Meta class.
+   2. Create hyperlinks for the relationships
+4. We need to pass explicitly the fields from the Artist model that will be in the serializer at the `fields` in the Meta class.
+
+With the serializer in place we need more 2 steps, the url mapping and the view.
+
+Let's do both in sequence, first the view. For the view we are going to use a [ModelViewSet](https://www.django-rest-framework.org/api-guide/viewsets/#modelviewset). Inside our file `music.views.py` we need to add this snipper.
+
+```python
+# music.views.py
+...
+class ArtistViewSet(viewsets.ModelViewSet):
+    queryset = Artist.objects.all()
+    serializer_class = ArtistSerializer
+```
+1. Here we create a ViewSet class that will be responsible to create our CRUD(+ list) views. It inherits from `ModelViewSet`.
+2. `queryset` parameter tells DRF what do list, this will be shared across all the views
+3. `serializer_class` is self-explanatory
+
+Don't forget to add the imports at the beggining of the file.
+```python
+from rest_framework import viewsets
+
+from music.models import Artist
+from music.serializers import ArtistSerializer
+```
 
 ## Building an API - Part I
 
-- 💻 Exercise: Students start building a basic API, integrating learned concepts.
-- 💡 Purpose: Applying accumulated knowledge in a practical project.
+Ok, now we just need to map our ArtistViewSet to a URL. In our `music.urls.py` we are going to use one more resource that DRF provides us, the [Default Router](https://www.django-rest-framework.org/api-guide/routers/#defaultrouter). It will create a set of common routes for our ViewSet.
+This will be the code:
+```python
+# music.urls.py
+from django.urls import path, include
+from rest_framework import routers
 
+from . import views
+from .views import ArtistViewSet
+
+router = routers.DefaultRouter()
+router.register(r'artists', ArtistViewSet)
+
+urlpatterns = [
+    path('', include(router.urls)),
+    # path('', views.index, name='index'),
+]
+```
+1. Import the routers from DRF
+2. Import the ArtistViewSet
+3. Instantiate the DefaultRouter
+4. Register the artists route to the ArtistViewSet
+5. So we include it on our urlpatterns
+6. And comment the previous endpoint we have, to avoid conflicts
+
+
+Now to see it all working together we need to create the migrations for our models with the following steps.
+```shell
+cd first_api
+./manage.py makemigrations music
+./manage.py migrate music
+cd ..
+task r
+```
+
+Now access http://127.0.0.1:8000/ to see your API working. 🥳
+
+Congratulations now you have your first api working.
+
+![first_api_working.png](../first_api_working.png)
 ## Lunch/Break
 
 - ⏳ Time for rest and informal discussions.

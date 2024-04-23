@@ -5,9 +5,9 @@
 The goal of this tutorial is for you to have Music API ready to receive songs, albums, and artists. While you learn [Django](https://www.djangoproject.com/) and [Django Rest Framework a.k.a DRF](https://www.django-rest-framework.org/) to build you first API
 
 Requirements list:
+
 1. Python 3
 2. Git
-3. 
 
 - **Total Duration:** 3 hours 30 minutes
 - **Lecture:** 1 hour (approximately 30%)
@@ -104,7 +104,7 @@ This will create the app structure for us. Something similar to this below:
 
 Don't forget to add the app music to your INSTALLED_APPS in your `settings.py`
 ```python
-# settings.py
+# first_api/settings.py
 ...
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -131,7 +131,7 @@ We are going to create 3 models in the file models.py
 Let's start with the artist model.
 
 ```python
-# music.models.py
+# music/models.py
 class Artist(models.Model):
     name = models.CharField(max_length=100)
 
@@ -145,7 +145,7 @@ from django.db import models
 ```
 Now the album model
 ```python
-# music.models.py
+# music/models.py
 class Album(models.Model):
     title = models.CharField(max_length=100)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
@@ -158,7 +158,7 @@ class Album(models.Model):
 The last model will be the song model that will have relationship with artist and album.
 
 ```python
-# music.models.py
+# music/models.py
 class Song(models.Model):
     author = models.CharField(max_length=100)
     title = models.CharField(max_length=100)
@@ -173,7 +173,7 @@ Now let's go to the URL Mapping, we need to associate the url with the handler f
 
 
 ```python
-# first_api.urls.py
+# first_api/urls.py
 from django.contrib import admin
 from django.urls import path, include
 
@@ -186,7 +186,7 @@ urlpatterns = [
 You need to create a file `urls.py` inside music folder and make it look like the example below.
 
 ```python
-# music.urls.py
+# music/urls.py
 from django.urls import path
 
 from . import views
@@ -200,7 +200,7 @@ And last but not least you need to create this
 you need to create the view. A function view in this case.
 
 ```python
-# music.views.py
+# music/views.py
 from django.http import HttpResponse
 
 
@@ -247,7 +247,7 @@ With the serializer in place we need more 2 steps, the url mapping and the view.
 Let's do both in sequence, first the view. For the view we are going to use a [ModelViewSet](https://www.django-rest-framework.org/api-guide/viewsets/#modelviewset). Inside our file `music.views.py` we need to add this snipper.
 
 ```python
-# music.views.py
+# music/views.py
 ...
 class ArtistViewSet(viewsets.ModelViewSet):
     queryset = Artist.objects.all()
@@ -270,7 +270,7 @@ from music.serializers import ArtistSerializer
 Ok, now we just need to map our ArtistViewSet to a URL. In our `music.urls.py` we are going to use one more resource that DRF provides us, the [Default Router](https://www.django-rest-framework.org/api-guide/routers/#defaultrouter). It will create a set of common routes for our ViewSet.
 This will be the code:
 ```python
-# music.urls.py
+# music/urls.py
 from django.urls import path, include
 from rest_framework import routers
 

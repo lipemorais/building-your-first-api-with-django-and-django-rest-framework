@@ -307,14 +307,13 @@ Now access http://127.0.0.1:8000/ to see your API working. 🥳
 Congratulations now you have your first api working.
 
 ![first_api_working.png](first_api_working.png)
+
 ## Lunch/Break
 
 - ⏳ Time for rest and informal discussions.
 
 ## Building an API - Part II
-
-- 💻 Exercise: Continuation of the API project with instructor support.
-- 💡 Purpose: Completing the API project, reinforcing learning through practice.
+Ok, so now we are going to create the apis for the other 2 models album and song model.
 
 ## Bonus content
 
@@ -331,7 +330,7 @@ Congratulations now you have your first api working.
 3. [Numeric](https://www.django-rest-framework.org/api-guide/fields/#numeric-fields)
 4. [Date and time](https://www.django-rest-framework.org/api-guide/fields/#date-and-time-fields)
 
-### Serializer relations
+### [Serializer relations](https://www.django-rest-framework.org/api-guide/relations/)
 
 
 ### [Validators](https://www.django-rest-framework.org/api-guide/validators/)

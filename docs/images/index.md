@@ -337,6 +337,133 @@ urlpatterns = [
 ```
 1. We added a new import for the AlbumViewSet
 2. We added the routes for albums
+
+Next is the `AlbumViewSet` in the `music.views.py`. I will break it down in some steps.
+
+```python
+class AlbumViewSet(viewsets.ViewSet):
+    queryset = Album.objects.all()
+    serializer_class = AlbumSerializer
+```
+1. Here we create a class `AlbumViewSet` inheriting from `views.ViewSet`, pay attention, this is nos a model view set.
+2. Set the `queryset`
+3. Set `serializer_class`, we are going to talk about this `AlbumSerializer` later
+
+After this still in the same view we are going through what DRF call actions.
+Instead of have methods in the view set for get, post, delete... It has functions based on actions. The actions are the ones below:
+
+```python
+class AlbumViewSet(viewsets.ViewSet):
+    queryset = Album.objects.all()
+    serializer_class = AlbumSerializer
+
+    def list(self, request):
+        """
+        List the resources, albums in this case
+        """
+        pass
+
+    def create(self, request):
+        """
+        List the resources, albums in this case
+        """
+        pass
+
+    def retrieve(self, request, pk=None):
+        """
+        Retrieve a single resources, album in this case
+        """
+        pass
+
+    def update(self, request, pk=None):
+        """
+        Update the resource, album in this case
+        """
+        pass
+
+    def partial_update(self, request, pk=None):
+        """
+        Partially update the resource, album in this case
+        """
+        pass
+
+    def destroy(self, request, pk=None):
+        """
+        Delete the resource, album in this case
+        """
+        pass
+```
+
+With the actions in place we will fill each of these methods.
+First the `list` method.
+
+```python
+    def list(self, request):
+        serializer = self.serializer_class(self.queryset, many=True)
+        return Response(serializer.data)
+```
+1. Here we just need to serialize the queryset and return it as a 
+2. Don't forget to import the `from rest_framework.response import Response`
+
+The following action will be `create`
+
+```python
+    def create(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+```
+1. Here we need to serialize the `request.data`
+2. Check if it `is_valid`
+3. Save our Album(There is caveat here I will show later how to fix)
+4. And return a response with the `serializer.data`a and a https status
+5. Don't forget to import `from rest_framework import status`
+
+Next is `retrieve`
+```python
+    def retrieve(self, request, pk=None):
+        album = get_object_or_404(Album, pk=pk)
+        serializer = self.serializer_class(album)
+        return Response(serializer.data)
+```
+1. We try to get the album using the `get_object_or_404` from `from rest_framework.generics import get_object_or_404`
+2. serialize it and send it back as a response
+
+So we have the `update`
+```python
+    def update(self, request, pk=None):
+        album = get_object_or_404(Album, pk=pk)
+        serializer = self.serializer_class(album, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+```
+1. Similarly to the previous one but this time we update just the needed fields
+
+For `partial_update` is close to the one above
+```python
+    def partial_update(self, request, pk=None):
+        album = get_object_or_404(Album, pk=pk)
+        serializer = self.serializer_class(album, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+```
+1. the only difference here from the `update` above is the `partial=True` so it know that it just need to update some fields not all of them.
+
+Last but not least `destroy` action to delete albums
+```python
+    def destroy(self, request, pk=None):
+        album = get_object_or_404(Album, pk=pk)
+        album.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+```
+1. Here we need to get the album and call the `.delete()` on it
+
+
+With `destroy` set the we finish the change on `music.views.py`
+
 ## Bonus content
 
 ### Serializers deep dive

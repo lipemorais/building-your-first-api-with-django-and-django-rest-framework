@@ -464,6 +464,54 @@ Last but not least `destroy` action to delete albums
 
 With `destroy` set the we finish the change on `music.views.py`
 
+Now we go for our `AlbumSerializer`
+
+```python
+class AlbumSerializer(serializers.Serializer):
+    title = serializers.CharField()
+    artist = ArtistSerializer()  # Serializers inherits from Field, so it can be used as fields too
+    release_year = serializers.IntegerField()
+
+    class Meta:
+        fields = ['title', 'artist', 'release_year']
+```
+
+1. First we define our `AlbumSerializer` inheriting from `serializers.Serializer`
+2. With the fields `title`, `artist`, `release_year` with it respective fields
+3. We also need to list the fields inside the class Meta
+
+Additionally we need to add 2 methods to let DRF know how to save and how to update the Albums.
+
+The first is `create`
+
+```python
+    def create(self, validated_data):
+        artist_data = validated_data.pop('artist')
+        artist, created = Artist.objects.get_or_create(name=artist_data['name'])
+        return Album.objects.create(artist=artist, **validated_data)
+```
+1. Where we create the album but since the album has artist as a nested model we need to create it here before try to save the album itself.
+2. Don't forget to import the `Album` model here with `from music.models import Album`
+
+and the `update` method
+```python
+    def update(self, album, validated_data):
+        artist_data = validated_data.pop('artist')
+        artist, created = Artist.objects.get_or_create(name=artist_data['name'])
+
+        album.title = validated_data.get('title', album.title)
+        album.release_year = validated_data.get('release_year', album.release_year)
+        album.artist = artist
+        album.save()
+
+        return album
+```
+1. To update we need to do the same with the `Artist` model, creating/getting it before save the Album
+2. So we get the new fields and save it
+3. Last we return the updated album
+
+With everything set we can see it working live.
+
 ## Bonus content
 
 ### Serializers deep dive

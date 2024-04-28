@@ -512,6 +512,12 @@ and the `update` method
 
 With everything set we can see it working live.
 
+Now we have 2 resources here, artists and albums
+
+![list-artist-album.png](list-artist-album.png)
+
+I hope that at this time you understand the amount of shortcuts DRF gives you at the same time, if you want to customize it, it's still possible.
+
 ## Bonus content
 
 ### Serializers deep dive

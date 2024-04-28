@@ -313,8 +313,30 @@ Congratulations now you have your first api working.
 - ⏳ Time for rest and informal discussions.
 
 ## Building an API - Part II
-Ok, so now we are going to create the apis for the other 2 models album and song model.
 
+
+Now that you've explored some of the shortcuts provided by DRF, let's delve into creating an endpoint for the album model using a plain Serializer, without relying heavily on shortcuts.
+
+Let's start by the urls part. We gonna need to add the new route to our `music.urls.py`. Now it should look like this.
+```python
+from django.urls import path, include
+from rest_framework import routers
+
+from . import views
+from .views import ArtistViewSet, AlbumViewSet
+
+router = routers.DefaultRouter()
+router.register(r'artists', ArtistViewSet)
+router.register(r'albums', AlbumViewSet)
+
+urlpatterns = [
+    path('', include(router.urls)),
+    # path('', views.index, name='index'),
+]
+
+```
+1. We added a new import for the AlbumViewSet
+2. We added the routes for albums
 ## Bonus content
 
 ### Serializers deep dive

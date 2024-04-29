@@ -209,7 +209,7 @@ def index(_request):
 ```
 
 So no you can use the command `task r` to start our django server, so you can access http://127.0.0.1:8000/ to see it.
-![my_first_api.png](my_first_api.png)
+![my_first_api.png](images/my_first_api.png)
 
 Until here we just looked at Django stuff. Now we will  dive into Django Rest Framework(DRF) stuff.
 
@@ -306,7 +306,7 @@ Now access http://127.0.0.1:8000/ to see your API working. 🥳
 
 Congratulations now you have your first api working.
 
-![first_api_working.png](first_api_working.png)
+![first_api_working.png](images/first_api_working.png)
 
 ## Lunch/Break
 
@@ -514,7 +514,7 @@ With everything set we can see it working live.
 
 Now we have 2 resources here, artists and albums
 
-![list-artist-album.png](list-artist-album.png)
+![list-artist-album.png](images/list-artist-album.png)
 
 I hope that at this time you understand the amount of shortcuts DRF gives you at the same time, if you want to customize it, it's still possible.
 

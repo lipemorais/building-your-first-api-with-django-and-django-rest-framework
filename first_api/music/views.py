@@ -3,8 +3,8 @@ from rest_framework import viewsets, status
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
-from music.models import Artist, Album
-from music.serializers import ArtistSerializer, AlbumSerializer
+from music.models import Artist, Album, Song
+from music.serializers import ArtistSerializer, AlbumSerializer, SongSerializer
 
 
 def index(_request):
@@ -53,3 +53,8 @@ class AlbumViewSet(viewsets.ViewSet):
         album = get_object_or_404(Album, pk=pk)
         album.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class SongViewSet(viewsets.ModelViewSet):
+    queryset = Song.objects.all()
+    serializer_class = SongSerializer

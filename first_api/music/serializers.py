@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from music.models import Artist, Album
+from music.models import Artist, Album, Song
 
 
 class ArtistSerializer(serializers.HyperlinkedModelSerializer):
@@ -35,3 +35,9 @@ class AlbumSerializer(serializers.Serializer):
         album.save()
 
         return album
+
+
+class SongSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Song
+        fields = ['author', 'title', 'artist', 'album', 'duration']

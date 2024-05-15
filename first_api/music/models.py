@@ -23,3 +23,6 @@ class Song(models.Model):
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)  # Artist or band name
     album = models.ForeignKey(Album, on_delete=models.CASCADE)  # Album the song belongs to
     duration = models.IntegerField()  # Duration of the song in seconds
+
+    def __str__(self):
+        return f'{self.title} - {self.artist} - {self.album}'

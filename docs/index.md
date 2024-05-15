@@ -480,7 +480,7 @@ class AlbumSerializer(serializers.Serializer):
 2. With the fields `title`, `artist`, `release_year` with it respective fields
 3. We also need to list the fields inside the class Meta
 
-Additionally we need to add 2 methods to let DRF know how to save and how to update the Albums.
+Additionally, we need to add 2 methods to let DRF know how to save and how to update the Albums.
 
 The first is `create`
 
@@ -517,6 +517,53 @@ Now we have 2 resources here, artists and albums
 ![list-artist-album.png](images/list-artist-album.png)
 
 I hope that at this time you understand the amount of shortcuts DRF gives you at the same time, if you want to customize it, it's still possible.
+
+## Building an API - Part III
+### Easy version
+We are going to start from the urls one more time. We will add the route for the songs in our `music.urls` like in the snippet below
+```python
+from django.urls import path, include
+from rest_framework import routers
+
+from .views import ArtistViewSet, AlbumViewSet, SongViewSet
+
+router = routers.DefaultRouter()
+router.register(r'artists', ArtistViewSet)
+router.register(r'albums', AlbumViewSet)
+# Add this new line below
+router.register(r'songs', SongViewSet) 
+
+urlpatterns = [
+    path('', include(router.urls)),
+    # path('', views.index, name='index'),
+]
+```
+After this we are going to create the `SongViewSet` in our `music.views` file using a `ModelViewSet` like in the snippet below. Also update  Don't forget to add the import for the `SongSerializer` in your imports 
+
+```python
+from music.serializers import ArtistSerializer, AlbumSerializer, SongSerializer
+
+class SongViewSet(viewsets.ModelViewSet):
+    queryset = Song.objects.all()
+    serializer_class = SongSerializer
+```
+
+At this point the `SongSerializer` doesn't exist yet, so now we are going to create it. Here also update the imports for the models including the `Song` model. Here there is a snippet so you see the changes you have to do on you `music.serializers` file.
+
+```python
+from music.models import Artist, Album, Song
+
+class SongSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Song
+        fields = ['author', 'title', 'artist', 'album', 'duration']
+```
+
+With this part done you will be able to run you application and see something like this on you api with all 3 resource working in your API, Artist, Album and Song. 🥳
+
+![final-version.png](images/final-version.png)
+
+Now you api is complete! Congratulations! 🍾🎉🎊 
 
 ## Bonus content
 

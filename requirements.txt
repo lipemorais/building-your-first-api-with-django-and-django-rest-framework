@@ -22,11 +22,11 @@ colorama==0.4.6
     # via
     #   mkdocs-material
     #   taskipy
-django==5.0.6
+django==4
     # via
     #   building-your-first-api-with-django-and-django-rest-framework (pyproject.toml)
     #   djangorestframework
-djangorestframework==3.15.1
+djangorestframework==3.13
     # via building-your-first-api-with-django-and-django-rest-framework (pyproject.toml)
 ghp-import==2.1.0
     # via mkdocs

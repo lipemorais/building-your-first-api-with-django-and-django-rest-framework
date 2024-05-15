@@ -295,8 +295,8 @@ urlpatterns = [
 Now to see it all working together we need to create the migrations for our models with the following steps.
 ```shell
 cd first_api
-./manage.py makemigrations music
-./manage.py migrate music
+./manage.py makemigrations
+./manage.py migrate
 cd ..
 task r
 ```

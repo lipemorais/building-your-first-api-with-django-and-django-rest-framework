@@ -1,4 +1,4 @@
-# 🌐 Building Your First API with Django and Django Rest Framework
+~~# 🌐 Building Your First API with Django and Django Rest Framework
 
 ## Summary
 
@@ -74,12 +74,8 @@ This will clone the repository
 
 Now we are going to create the Django we are going to use in this tutorial.
 
-```shell
-cd first_api
-./manage.py startapp music
-```
 
-This will create the app structure for us. Something similar to this below:
+The current project structure is something similar to this below:
 ```shell
 ❯ tree .
 .
@@ -101,7 +97,7 @@ This will create the app structure for us. Something similar to this below:
     └── views.py
 ```
 
-Don't forget to add the app music to your INSTALLED_APPS in your `settings.py`
+Don't forget to check the app music to your INSTALLED_APPS in your `settings.py`
 ```python
 # first_api/settings.py
 ...

@@ -12,6 +12,7 @@
 # AWS User-specific
 .idea/**/aws.xml
 .idea
+my_env/
 # Generated files
 .idea/**/contentModel.xml
 

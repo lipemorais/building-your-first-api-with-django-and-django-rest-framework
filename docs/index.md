@@ -83,7 +83,6 @@ This will create the app structure for us. Something similar to this below:
 ```shell
 ❯ tree .
 .
-├── db.sqlite3
 ├── first_api
 │   ├── __init__.py
 │   ├── asgi.py

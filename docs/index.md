@@ -14,7 +14,7 @@ Requirements list:
 - **Exercises:** 2 hours 30 minutes (approximately 70%)
 
 
-[Presentation slides](https://docs.google.com/presentation/d/1Ajv9MYQQ011_Y4r1W4I6Y-6XP_faFF0317Zkn2XupMw/edit?usp=sharing) 📊
+[Presentation slides](https://docs.google.com/presentation/d/1xE8d5XkeKC9hHBVGwbgvjbFEqcCzP9Hy7Qxb8EGjm7A/edit?usp=sharing) 📊
 
 
 ## Introduction and Overview

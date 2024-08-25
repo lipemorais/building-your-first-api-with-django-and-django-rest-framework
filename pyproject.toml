@@ -1,27 +1,21 @@
-[tool.poetry]
+[project]
 name = "building-your-first-api-with-django-and-django-rest-framework"
-version = "0.1.0"
+version = "0.2.0"
 description = "Tutorial for you to learn how to create a API using Django and Django Rest Framework"
+readme = "README.md"
 authors = ["FeliPython <felipejpa15@gmail.com>"]
 license = "CC BY-NC-SA"
-readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.12"
-django = "^5.0.3"
-djangorestframework = "^3.15.0"
-markdown = "^3.6"
-pygments = "^2.17.2"
-mkdocs-material = "^9.5.15"
-pip-tools = "^7.4.1"
-taskipy = "^1.12.2"
-
-
-[tool.poetry.group.dev.dependencies]
+requires-python = ">=3.12"
+dependencies = [
+    "django>=5.1",
+    "djangorestframework>=3.15.2",
+    "mkdocs-material>=9.5.33",
+    "taskipy>=1.13.0",
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.taskipy.tasks]
 docs = { cmd = "mkdocs serve", help = "run documentation server" }

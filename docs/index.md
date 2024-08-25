@@ -6,9 +6,11 @@ The goal of this tutorial is for you to have Music API ready to receive songs, a
 
 Requirements list:
 
-1. Python 3
+1. Python 3.12
 2. Git
+3. [uv](https://docs.astral.sh/uv/)
 
+---
 - **Total Duration:** 3 hours 30 minutes
 - **Lecture:** 1 hour (approximately 30%)
 - **Exercises:** 2 hours 30 minutes (approximately 70%)
@@ -20,7 +22,7 @@ Requirements list:
 ## Introduction and Overview
 
 ### [Django](https://www.djangoproject.com/)
-To start, we first need to understand what Django is. Django is the most popular web framework in the Python ecosystem, characterized by its high-level structure that encourages rapid development and clean, pragmatic design. It has been constructed by experienced developers and aims to mitigate the hassles of web development; this allows developers to focus their attention on writing their app without feeling the need to reinvent the wheel. Django is a free and open-source framework that is ingrained in the model-template-views architectural pattern. Its maintenance is overseen by the Django Software Foundation, an independent, non-profit organization based in the United States.
+To start, we first need to understand what Django is. Django is the most popular web framework in the Python ecosystem, characterized by its high-level structure that encourages rapid development and clean, pragmatic design. It has been constructed by experienced developers and aims to mitigate the hassles of web development; this allows developers to focus their attention on writing their app without feeling the need to reinvent the wheel. Django is a free and open-source framework that is ingrained in the model-template-views architectural pattern. Its maintenance is overseen by the [Django Software Foundation](https://www.djangoproject.com/foundation/), an independent, non-profit organization based in the United States.
 
 ### [Django Rest Framework](https://www.django-rest-framework.org/)
 The Django Rest Framework is a powerful library constructed on top of Django, with a unique interlinking to the Django Model. This relationship endows Django with the enhanced ability to create APIs(application programming interfaces).
@@ -68,11 +70,30 @@ Clone the repository:
 git clone git@github.com:lipemorais/building-your-first-api-with-django-and-django-rest-framework.git
 ```
 
-This will clone the repository
+With the repository cloned, you need to install uv on your machine to manage the project and dependencies here:
+[uv instalation instruction](https://docs.astral.sh/uv/getting-started/installation/#installing-uv)
+
+Now you have the project cloned and uv installed,
+you need to follow these steps on create your virtualenv and install the dependencies.
+
+```shell
+cd building-your-first-api-with-django-and-django-rest-framework
+uv venv
+source .venv/bin/activate # if you are on Windows use: .venv\Scripts\activate
+uv sync
+task run # to see the application running
+```
+
+You might be able to see the application running o [127.0.0.1:8000](http://127.0.0.1:8000/).
+
+![img.png](img.png)
+
+
+Well done! Now you are all set!
 
 ## Creating the music Django App
 
-Now we are going to create the Django we are going to use in this tutorial.
+Now we are going to dive into the Django world, creating the Music app we are going to use in this tutorial.
 
 ```shell
 cd first_api
@@ -211,10 +232,10 @@ def index(_request):
     return HttpResponse("My first API!")
 ```
 
-So no you can use the command `task r` to start our django server, so you can access http://127.0.0.1:8000/ to see it.
+So no you can use the command `task r` to start our django server, so you can access [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to see it.
 ![my_first_api.png](images/my_first_api.png)
 
-Until here we just looked at Django stuff. Now we will dive into Django Rest Framework(DRF) stuff.
+Until here we just looked at Django concepts. Now we will dive into Django Rest Framework(DRF) concepts.
 
 ## Serializers
 
@@ -586,30 +607,3 @@ With this part done you will be able to run you application and see something li
 ![final-version.png](images/final-version.png)
 
 Now you api is complete! Congratulations! 🍾🎉🎊
-
-## Bonus content
-
-### Serializers deep dive
-
-#### Types
-
-1. [Serializer](https://www.django-rest-framework.org/api-guide/serializers/#serializers)
-2. [Model Serializer](https://www.django-rest-framework.org/api-guide/serializers/#modelserializer)
-3. [Hyperlinked Model Serializer](https://www.django-rest-framework.org/api-guide/serializers/#hyperlinkedmodelserializer)
-
-### Serializer fields
-
-1. [Boolean](https://www.django-rest-framework.org/api-guide/fields/#boolean-fields)
-2. [String](https://www.django-rest-framework.org/api-guide/fields/#string-fields)
-3. [Numeric](https://www.django-rest-framework.org/api-guide/fields/#numeric-fields)
-4. [Date and time](https://www.django-rest-framework.org/api-guide/fields/#date-and-time-fields)
-
-### [Serializer relations](https://www.django-rest-framework.org/api-guide/relations/)
-
-### [Validators](https://www.django-rest-framework.org/api-guide/validators/)
-
-### [Routers](https://www.django-rest-framework.org/api-guide/routers/)
-
-### [ViewSets](https://www.django-rest-framework.org/api-guide/viewsets/)
-
-### [The Browsable API](https://www.django-rest-framework.org/topics/browsable-api/)

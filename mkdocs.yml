@@ -1,8 +1,8 @@
 site_name: 🌐 Building Your First API with Django and Django Rest Framework
 nav:
 - Home: index.md
-- Sample: sample.md
 - About: about.md
+- Bonus Content: bonus.md
 theme:
   name: material
   features:
@@ -21,14 +21,14 @@ theme:
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
-      primary: deep purple
-      accent: pink
+      primary: light blue
+      accent: cyan
     - scheme: slate
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
-      primary: deep purple
-      accent: pink
+      primary: light blue
+      accent: cyan
 
 extra:
   social:

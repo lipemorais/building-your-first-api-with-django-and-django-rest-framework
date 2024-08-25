@@ -118,6 +118,7 @@ INSTALLED_APPS = [
 ]
 ...
 ```
+
 ## Django Models
 
 Now the next step is create the models we are going to use in our API to represent the domain models.
@@ -140,10 +141,13 @@ class Artist(models.Model):
 ```
 
 Don't forget to import the models
+
 ```python
 from django.db import models
 ```
+
 Now the album model
+
 ```python
 # music/models.py
 class Album(models.Model):
@@ -170,7 +174,6 @@ class Song(models.Model):
 ## URL Mapping and Views
 
 Now let's go to the URL Mapping, we need to associate the url with the handler functions that are called as view in Django. To create a simple endpoint that works.
-
 
 ```python
 # first_api/urls.py
@@ -211,19 +214,19 @@ def index(_request):
 So no you can use the command `task r` to start our django server, so you can access http://127.0.0.1:8000/ to see it.
 ![my_first_api.png](images/my_first_api.png)
 
-Until here we just looked at Django stuff. Now we will  dive into Django Rest Framework(DRF) stuff.
+Until here we just looked at Django stuff. Now we will dive into Django Rest Framework(DRF) stuff.
 
 ## Serializers
 
 From now on we will dive into DRF specific work.
 The concept I want to present you is the Serializer. That is responsible for parse the data received(usually through a HTTP request, since we are creating an API) into python native types, and sometime into our Django models.
 
-
 Serializers are deeply inspired into [Django Forms](https://docs.djangoproject.com/en/5.0/topics/forms/#forms-in-django) and [Django Model Forms](https://docs.djangoproject.com/en/5.0/topics/forms/modelforms/)
 
 So now we will use our Artist model to create our first endpoint.
 
 You need to create a file called `serializers.py` with creating the serializer for the Artist Model.
+
 ```python
 from rest_framework import serializers
 
@@ -235,6 +238,7 @@ class ArtistSerializer(serializers.HyperlinkedModelSerializer):
         model = Artist
         fields = ['name']
 ```
+
 1. Here we import the serializers module from rest_framework
 2. We also import the model Artist
 3. Create a `ArtistSerializer` inheriting from `serializers.HyperlinkedModelSerializers`. It will do a few things.
@@ -253,11 +257,13 @@ class ArtistViewSet(viewsets.ModelViewSet):
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
 ```
+
 1. Here we create a ViewSet class that will be responsible to create our CRUD(+ list) views. It inherits from `ModelViewSet`.
 2. `queryset` parameter tells DRF what do list, this will be shared across all the views
 3. `serializer_class` is self-explanatory
 
 Don't forget to add the imports at the beggining of the file.
+
 ```python
 from rest_framework import viewsets
 
@@ -269,6 +275,7 @@ from music.serializers import ArtistSerializer
 
 Ok, now we just need to map our ArtistViewSet to a URL. In our `music.urls.py` we are going to use one more resource that DRF provides us, the [Default Router](https://www.django-rest-framework.org/api-guide/routers/#defaultrouter). It will create a set of common routes for our ViewSet.
 This will be the code:
+
 ```python
 # music/urls.py
 from django.urls import path, include
@@ -285,6 +292,7 @@ urlpatterns = [
     # path('', views.index, name='index'),
 ]
 ```
+
 1. Import the routers from DRF
 2. Import the ArtistViewSet
 3. Instantiate the DefaultRouter
@@ -292,8 +300,8 @@ urlpatterns = [
 5. So we include it on our urlpatterns
 6. And comment the previous endpoint we have, to avoid conflicts
 
-
 Now to see it all working together we need to create the migrations for our models with the following steps.
+
 ```shell
 cd first_api
 ./manage.py makemigrations music
@@ -314,10 +322,10 @@ Congratulations now you have your first api working.
 
 ## Building an API - Part II
 
-
 Now that you've explored some of the shortcuts provided by DRF, let's delve into creating an endpoint for the album model using a plain Serializer, without relying heavily on shortcuts.
 
 Let's start by the urls part. We gonna need to add the new route to our `music.urls.py`. Now it should look like this.
+
 ```python
 from django.urls import path, include
 from rest_framework import routers
@@ -335,6 +343,7 @@ urlpatterns = [
 ]
 
 ```
+
 1. We added a new import for the AlbumViewSet
 2. We added the routes for albums
 
@@ -345,6 +354,7 @@ class AlbumViewSet(viewsets.ViewSet):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
 ```
+
 1. Here we create a class `AlbumViewSet` inheriting from `views.ViewSet`, pay attention, this is nos a model view set.
 2. Set the `queryset`
 3. Set `serializer_class`, we are going to talk about this `AlbumSerializer` later
@@ -402,7 +412,8 @@ First the `list` method.
         serializer = self.serializer_class(self.queryset, many=True)
         return Response(serializer.data)
 ```
-1. Here we just need to serialize the queryset and return it as a 
+
+1. Here we just need to serialize the queryset and return it as a
 2. Don't forget to import the `from rest_framework.response import Response`
 
 The following action will be `create`
@@ -414,6 +425,7 @@ The following action will be `create`
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 ```
+
 1. Here we need to serialize the `request.data`
 2. Check if it `is_valid`
 3. Save our Album(There is caveat here I will show later how to fix)
@@ -421,16 +433,19 @@ The following action will be `create`
 5. Don't forget to import `from rest_framework import status`
 
 Next is `retrieve`
+
 ```python
     def retrieve(self, request, pk=None):
         album = get_object_or_404(Album, pk=pk)
         serializer = self.serializer_class(album)
         return Response(serializer.data)
 ```
+
 1. We try to get the album using the `get_object_or_404` from `from rest_framework.generics import get_object_or_404`
 2. serialize it and send it back as a response
 
 So we have the `update`
+
 ```python
     def update(self, request, pk=None):
         album = get_object_or_404(Album, pk=pk)
@@ -439,9 +454,11 @@ So we have the `update`
         serializer.save()
         return Response(serializer.data)
 ```
+
 1. Similarly to the previous one but this time we update just the needed fields
 
 For `partial_update` is close to the one above
+
 ```python
     def partial_update(self, request, pk=None):
         album = get_object_or_404(Album, pk=pk)
@@ -450,17 +467,19 @@ For `partial_update` is close to the one above
         serializer.save()
         return Response(serializer.data)
 ```
+
 1. the only difference here from the `update` above is the `partial=True` so it know that it just need to update some fields not all of them.
 
 Last but not least `destroy` action to delete albums
+
 ```python
     def destroy(self, request, pk=None):
         album = get_object_or_404(Album, pk=pk)
         album.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 ```
-1. Here we need to get the album and call the `.delete()` on it
 
+1. Here we need to get the album and call the `.delete()` on it
 
 With `destroy` set the we finish the change on `music.views.py`
 
@@ -490,10 +509,12 @@ The first is `create`
         artist, created = Artist.objects.get_or_create(name=artist_data['name'])
         return Album.objects.create(artist=artist, **validated_data)
 ```
+
 1. Where we create the album but since the album has artist as a nested model we need to create it here before try to save the album itself.
 2. Don't forget to import the `Album` model here with `from music.models import Album`
 
 and the `update` method
+
 ```python
     def update(self, album, validated_data):
         artist_data = validated_data.pop('artist')
@@ -506,6 +527,7 @@ and the `update` method
 
         return album
 ```
+
 1. To update we need to do the same with the `Artist` model, creating/getting it before save the Album
 2. So we get the new fields and save it
 3. Last we return the updated album
@@ -519,8 +541,11 @@ Now we have 2 resources here, artists and albums
 I hope that at this time you understand the amount of shortcuts DRF gives you at the same time, if you want to customize it, it's still possible.
 
 ## Building an API - Part III
+
 ### Easy version
+
 We are going to start from the urls one more time. We will add the route for the songs in our `music.urls` like in the snippet below
+
 ```python
 from django.urls import path, include
 from rest_framework import routers
@@ -531,14 +556,15 @@ router = routers.DefaultRouter()
 router.register(r'artists', ArtistViewSet)
 router.register(r'albums', AlbumViewSet)
 # Add this new line below
-router.register(r'songs', SongViewSet) 
+router.register(r'songs', SongViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
     # path('', views.index, name='index'),
 ]
 ```
-After this we are going to create the `SongViewSet` in our `music.views` file using a `ModelViewSet` like in the snippet below. Also update  Don't forget to add the import for the `SongSerializer` in your imports 
+
+After this we are going to create the `SongViewSet` in our `music.views` file using a `ModelViewSet` like in the snippet below. Also update Don't forget to add the import for the `SongSerializer` in your imports
 
 ```python
 from music.serializers import ArtistSerializer, AlbumSerializer, SongSerializer
@@ -563,25 +589,26 @@ With this part done you will be able to run you application and see something li
 
 ![final-version.png](images/final-version.png)
 
-Now you api is complete! Congratulations! 🍾🎉🎊 
+Now you api is complete! Congratulations! 🍾🎉🎊
 
 ## Bonus content
 
 ### Serializers deep dive
 
 #### Types
+
 1. [Serializer](https://www.django-rest-framework.org/api-guide/serializers/#serializers)
 2. [Model Serializer](https://www.django-rest-framework.org/api-guide/serializers/#modelserializer)
 3. [Hyperlinked Model Serializer](https://www.django-rest-framework.org/api-guide/serializers/#hyperlinkedmodelserializer)
 
 ### Serializer fields
+
 1. [Boolean](https://www.django-rest-framework.org/api-guide/fields/#boolean-fields)
 2. [String](https://www.django-rest-framework.org/api-guide/fields/#string-fields)
 3. [Numeric](https://www.django-rest-framework.org/api-guide/fields/#numeric-fields)
 4. [Date and time](https://www.django-rest-framework.org/api-guide/fields/#date-and-time-fields)
 
 ### [Serializer relations](https://www.django-rest-framework.org/api-guide/relations/)
-
 
 ### [Validators](https://www.django-rest-framework.org/api-guide/validators/)
 

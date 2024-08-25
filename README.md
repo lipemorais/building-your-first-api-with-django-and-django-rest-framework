@@ -1,6 +1,6 @@
 # 🌐 Building Your First API with Django and Django Rest Framework
 
-Join us at PyCon US 2024 for an exciting tutorial 🎓, where we'll dive into the world of web APIs using Python's beloved Django framework and the Django Rest Framework. This session is perfect for Python enthusiasts 🐍 eager to expand their web development skills in a practical, hands-on environment.
+Join us for an exciting tutorial 🎓, where we'll dive into the world of web APIs using Python's beloved Django framework and the Django Rest Framework. This session is perfect for Python enthusiasts 🐍 eager to expand their web development skills in a practical, hands-on environment.
 
 **What You Will Learn**
 
@@ -12,6 +12,6 @@ Join us at PyCon US 2024 for an exciting tutorial 🎓, where we'll dive into th
 
 **Why This Tutorial?**
 
-This tutorial  is tailored for those ready to step into API development with Django. We focus not just on theoretical knowledge but also emphasize practical skills. By the end of this session, you'll have a clear understanding of the essential components of Django for API development and hands-on experience in building an API.
+This tutorial is tailored for those ready to step into API development with Django. We focus not just on theoretical knowledge but also emphasize practical skills. By the end of this session, you'll have a clear understanding of the essential components of Django for API development and hands-on experience in building an API.
 
 Are you already navigating the Django landscape and seeking to deepen your expertise? 🌱 This tutorial provides an immersive opportunity to advance your web development skills and explore the intricacies of API development using Django and the Django Rest Framework. 🚀 Join us for an enriching journey as we delve into mastering the art of building powerful APIs with Django!

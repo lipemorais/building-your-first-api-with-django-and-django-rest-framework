@@ -613,8 +613,3 @@ Now you api is complete! Congratulations! 🍾🎉🎊
 ### [ViewSets](https://www.django-rest-framework.org/api-guide/viewsets/)
 
 ### [The Browsable API](https://www.django-rest-framework.org/topics/browsable-api/)
-
-## Q&A and Wrap-Up
-
-- 🎬 Lecture: Recap of the day's lessons, addressing questions.
-- 💡 Purpose: Ensuring clarity and concluding the session.

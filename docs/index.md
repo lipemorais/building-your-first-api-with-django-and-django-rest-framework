@@ -316,10 +316,6 @@ Congratulations now you have your first api working.
 
 ![first_api_working.png](images/first_api_working.png)
 
-## Lunch/Break
-
-- ⏳ Time for rest and informal discussions.
-
 ## Building an API - Part II
 
 Now that you've explored some of the shortcuts provided by DRF, let's delve into creating an endpoint for the album model using a plain Serializer, without relying heavily on shortcuts.

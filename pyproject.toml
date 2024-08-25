@@ -3,8 +3,8 @@ name = "building-your-first-api-with-django-and-django-rest-framework"
 version = "0.2.0"
 description = "Tutorial for you to learn how to create a API using Django and Django Rest Framework"
 readme = "README.md"
-authors = ["FeliPython <felipejpa15@gmail.com>"]
-license = "CC BY-NC-SA"
+authors = [{ name = "FeliPython", email = "felipejpa15@gmail.com" }]
+license = "CC-BY-NC-SA-4.0"
 requires-python = ">=3.12"
 dependencies = [
     "django>=5.1",

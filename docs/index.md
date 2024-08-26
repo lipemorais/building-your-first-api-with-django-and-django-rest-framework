@@ -392,13 +392,13 @@ class AlbumViewSet(viewsets.ViewSet):
 
     def create(self, request):
         """
-        List the resources, albums in this case
+        Create a new resource, albums in this case
         """
         pass
 
     def retrieve(self, request, pk=None):
         """
-        Retrieve a single resources, album in this case
+        Retrieve a single resource, album in this case
         """
         pass
 

@@ -1,8 +1,9 @@
 site_name: 🌐 Building Your First API with Django and Django Rest Framework
 nav:
-- Home: index.md
-- About: about.md
-- Bonus Content: bonus.md
+  - Home:
+    - index.md
+    - bonus.md
+  - About: about.md
 theme:
   name: material
   features:

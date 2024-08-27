@@ -1,4 +1,4 @@
-# 🌐 Building Your First API with Django and Django Rest Framework
+# Tutorial
 
 ## Summary
 

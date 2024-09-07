@@ -15,6 +15,17 @@ Requirements list:
 - **Lecture:** 1 hour (approximately 30%)
 - **Exercises:** 2 hours 30 minutes (approximately 70%)
 
+## Who am I?
+![felipe.png](felipe.png)
+Hey! I'm FeliPython a.k.a.
+Felipe de Morais.
+👋🏾 I'm a seasoned software engineer with extensive experience in Python, Django development, and now FastAPI.
+🐍
+
+
+When I'm not coding, you'll find me rolling on the mats as a [Brazilian] Jiu Jitsu Blue Belt, embracing the discipline and challenges of the sport. Because life needs a furry friend, I train my dog solo, which has been an incredibly rewarding experience. 🐕
+
+
 
 [Presentation slides](https://docs.google.com/presentation/d/1xE8d5XkeKC9hHBVGwbgvjbFEqcCzP9Hy7Qxb8EGjm7A/edit?usp=sharing) 📊
 

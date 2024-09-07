@@ -3,7 +3,6 @@ nav:
   - Home:
     - index.md
     - bonus.md
-  - About: about.md
 theme:
   name: material
   features:

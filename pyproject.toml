@@ -16,4 +16,4 @@ dependencies = [
 
 [tool.taskipy.tasks]
 docs = { cmd = "mkdocs serve", help = "run documentation server" }
-r = { cmd = "python first_api/manage.py runserver", help = "run django dev server" }
+run = { cmd = "python first_api/manage.py runserver", help = "run django dev server" }

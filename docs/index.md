@@ -383,7 +383,7 @@ class AlbumViewSet(viewsets.ViewSet):
     serializer_class = AlbumSerializer
 ```
 
-1. Here we create a class `AlbumViewSet` inheriting from `views.ViewSet`, pay attention, this is nos a model view set.
+1. Here we create a class `AlbumViewSet` inheriting from `views.ViewSet`, pay attention, this is not a model view set.
 2. Set the `queryset`
 3. Set `serializer_class`, we are going to talk about this `AlbumSerializer` later
 

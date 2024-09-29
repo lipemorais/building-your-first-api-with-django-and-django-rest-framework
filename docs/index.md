@@ -92,7 +92,7 @@ cd building-your-first-api-with-django-and-django-rest-framework
 uv venv
 source .venv/bin/activate # if you are on Windows use: .venv\Scripts\activate
 uv sync
-task run # to see the application running
+task r # to see the application running
 ```
 
 You might be able to see the application running o [127.0.0.1:8000](http://127.0.0.1:8000/).

@@ -280,7 +280,7 @@ class ArtistSerializer(serializers.HyperlinkedModelSerializer):
 
 With the serializer in place we need more 2 steps, the view and the url mapping.
 
-Let's do both in sequence, first the view. For the view we are going to use a [ModelViewSet](https://www.django-rest-framework.org/api-guide/viewsets/#modelviewset). Inside our file `music.views.py` we need to add this snipper.
+Let's do both in sequence, first the view. For the view we are going to use a [ModelViewSet](https://www.django-rest-framework.org/api-guide/viewsets/#modelviewset). Inside our file `music.views.py` we need to add this snippet.
 
 ```python
 # music/views.py

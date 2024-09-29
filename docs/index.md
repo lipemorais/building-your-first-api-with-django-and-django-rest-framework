@@ -441,7 +441,7 @@ First the `list` method.
         return Response(serializer.data)
 ```
 
-1. Here we just need to serialize the queryset and return it as a
+1. Here we just need to serialize the queryset and return it as a `Response`
 2. Don't forget to import the `from rest_framework.response import Response`
 
 The following action will be `create`

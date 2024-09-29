@@ -386,6 +386,8 @@ class AlbumViewSet(viewsets.ViewSet):
 1. Here we create a class `AlbumViewSet` inheriting from `views.ViewSet`, pay attention, this is nos a model view set.
 2. Set the `queryset`
 3. Set `serializer_class`, we are going to talk about this `AlbumSerializer` later
+4. For now, just import the `AlbumSerializer` with `from music.serializers import AlbumSerializer`
+5. Don't forget to import the Album model here with `from music.models import Album`
 
 After this still in the same view we are going through what DRF call actions.
 Instead of have methods in the view set for get, post, delete... It has functions based on actions. The actions are the ones below:

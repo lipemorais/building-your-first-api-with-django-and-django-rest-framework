@@ -290,7 +290,7 @@ class ArtistViewSet(viewsets.ModelViewSet):
     serializer_class = ArtistSerializer
 ```
 
-1. Here we create a ViewSet class that will be responsible to create our CRUD(+ list) views. It inherits from `ModelViewSet`.
+1. Here we create a ViewSet class that will be responsible for creating our CRUD(+ list) views. It inherits from `ModelViewSet`.
 2. `queryset` parameter tells DRF what do list, this will be shared across all the views
 3. `serializer_class` is self-explanatory
 

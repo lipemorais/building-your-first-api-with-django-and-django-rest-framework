@@ -243,7 +243,7 @@ def index(_request):
     return HttpResponse("My first API!")
 ```
 
-So no you can use the command `task r` to start our django server, so you can access [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to see it.
+So now you can use the command `task r` to start our django server, so you can access [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to see it.
 ![my_first_api.png](images/my_first_api.png)
 
 Until here we just looked at Django concepts. Now we will dive into Django Rest Framework(DRF) concepts.

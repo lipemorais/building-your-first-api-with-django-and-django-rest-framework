@@ -352,7 +352,7 @@ Congratulations now you have your first api working.
 
 Now that you've explored some of the shortcuts provided by DRF, let's delve into creating an endpoint for the album model using a plain Serializer, without relying heavily on shortcuts.
 
-Let's start by the urls part. We gonna need to add the new route to our `music.urls.py`. Now it should look like this.
+Let's start by the urls part. We're going to need to add the new route to our `music.urls.py`. Now it should look like this.
 
 ```python
 from django.urls import path, include

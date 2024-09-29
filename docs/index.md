@@ -594,9 +594,10 @@ urlpatterns = [
 ]
 ```
 
-After this we are going to create the `SongViewSet` in our `music.views` file using a `ModelViewSet` like in the snippet below. Also update Don't forget to add the import for the `SongSerializer` in your imports
+After this we are going to create the `SongViewSet` in our `music.views` file using a `ModelViewSet` like in the snippet below. Also update Don't forget to add the import for `Song` and `SongSerializer` in your imports
 
 ```python
+from music.models import Artist, Album, Song
 from music.serializers import ArtistSerializer, AlbumSerializer, SongSerializer
 
 class SongViewSet(viewsets.ModelViewSet):

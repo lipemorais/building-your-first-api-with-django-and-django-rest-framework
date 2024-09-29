@@ -538,7 +538,7 @@ The first is `create`
         return Album.objects.create(artist=artist, **validated_data)
 ```
 
-1. Where we create the album but since the album has artist as a nested model we need to create it here before try to save the album itself.
+1. We create the album, but since the album has artist as a nested model, we need to create it here before try to save the album itself.
 2. Don't forget to import the `Album` model here with `from music.models import Album`
 
 and the `update` method

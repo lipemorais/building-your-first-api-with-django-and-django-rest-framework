@@ -278,7 +278,7 @@ class ArtistSerializer(serializers.HyperlinkedModelSerializer):
    2. Create hyperlinks for the relationships
 4. We need to pass explicitly the fields from the Artist model that will be in the serializer at the `fields` in the Meta class.
 
-With the serializer in place we need more 2 steps, the url mapping and the view.
+With the serializer in place we need more 2 steps, the view and the url mapping.
 
 Let's do both in sequence, first the view. For the view we are going to use a [ModelViewSet](https://www.django-rest-framework.org/api-guide/viewsets/#modelviewset). Inside our file `music.views.py` we need to add this snipper.
 

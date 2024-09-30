@@ -92,7 +92,7 @@ cd building-your-first-api-with-django-and-django-rest-framework
 uv venv
 source .venv/bin/activate # if you are on Windows use: .venv\Scripts\activate
 uv sync
-task run # to see the application running
+task r # to see the application running
 ```
 
 You might be able to see the application running o [127.0.0.1:8000](http://127.0.0.1:8000/).
@@ -243,7 +243,7 @@ def index(_request):
     return HttpResponse("My first API!")
 ```
 
-So no you can use the command `task r` to start our django server, so you can access [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to see it.
+So now you can use the command `task r` to start our django server, so you can access [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to see it.
 ![my_first_api.png](images/my_first_api.png)
 
 Until here we just looked at Django concepts. Now we will dive into Django Rest Framework(DRF) concepts.
@@ -278,9 +278,9 @@ class ArtistSerializer(serializers.HyperlinkedModelSerializer):
    2. Create hyperlinks for the relationships
 4. We need to pass explicitly the fields from the Artist model that will be in the serializer at the `fields` in the Meta class.
 
-With the serializer in place we need more 2 steps, the url mapping and the view.
+With the serializer in place we need more 2 steps, the view and the url mapping.
 
-Let's do both in sequence, first the view. For the view we are going to use a [ModelViewSet](https://www.django-rest-framework.org/api-guide/viewsets/#modelviewset). Inside our file `music.views.py` we need to add this snipper.
+Let's do both in sequence, first the view. For the view we are going to use a [ModelViewSet](https://www.django-rest-framework.org/api-guide/viewsets/#modelviewset). Inside our file `music.views.py` we need to add this snippet.
 
 ```python
 # music/views.py
@@ -290,7 +290,7 @@ class ArtistViewSet(viewsets.ModelViewSet):
     serializer_class = ArtistSerializer
 ```
 
-1. Here we create a ViewSet class that will be responsible to create our CRUD(+ list) views. It inherits from `ModelViewSet`.
+1. Here we create a ViewSet class that will be responsible for creating our CRUD(+ list) views. It inherits from `ModelViewSet`.
 2. `queryset` parameter tells DRF what do list, this will be shared across all the views
 3. `serializer_class` is self-explanatory
 
@@ -352,7 +352,7 @@ Congratulations now you have your first api working.
 
 Now that you've explored some of the shortcuts provided by DRF, let's delve into creating an endpoint for the album model using a plain Serializer, without relying heavily on shortcuts.
 
-Let's start by the urls part. We gonna need to add the new route to our `music.urls.py`. Now it should look like this.
+Let's start by the urls part. We're going to need to add the new route to our `music.urls.py`. Now it should look like this.
 
 ```python
 from django.urls import path, include
@@ -386,6 +386,8 @@ class AlbumViewSet(viewsets.ViewSet):
 1. Here we create a class `AlbumViewSet` inheriting from `views.ViewSet`, pay attention, this is not a model view set.
 2. Set the `queryset`
 3. Set `serializer_class`, we are going to talk about this `AlbumSerializer` later
+4. For now, just import the `AlbumSerializer` with `from music.serializers import AlbumSerializer`
+5. Don't forget to import the Album model here with `from music.models import Album`
 
 After this still in the same view we are going through what DRF call actions.
 Instead of have methods in the view set for get, post, delete... It has functions based on actions. The actions are the ones below:
@@ -441,7 +443,7 @@ First the `list` method.
         return Response(serializer.data)
 ```
 
-1. Here we just need to serialize the queryset and return it as a
+1. Here we just need to serialize the queryset and return it as a `Response`
 2. Don't forget to import the `from rest_framework.response import Response`
 
 The following action will be `create`
@@ -538,7 +540,7 @@ The first is `create`
         return Album.objects.create(artist=artist, **validated_data)
 ```
 
-1. Where we create the album but since the album has artist as a nested model we need to create it here before try to save the album itself.
+1. We create the album, but since the album has artist as a nested model, we need to create it here before try to save the album itself.
 2. Don't forget to import the `Album` model here with `from music.models import Album`
 
 and the `update` method
@@ -592,9 +594,10 @@ urlpatterns = [
 ]
 ```
 
-After this we are going to create the `SongViewSet` in our `music.views` file using a `ModelViewSet` like in the snippet below. Also update Don't forget to add the import for the `SongSerializer` in your imports
+After this we are going to create the `SongViewSet` in our `music.views` file using a `ModelViewSet` like in the snippet below. Also update Don't forget to add the import for `Song` and `SongSerializer` in your imports
 
 ```python
+from music.models import Artist, Album, Song
 from music.serializers import ArtistSerializer, AlbumSerializer, SongSerializer
 
 class SongViewSet(viewsets.ModelViewSet):
